@@ -1,4 +1,16 @@
-"""Runs tweakreg and creates plot
+import glob
+from stsci.tools import teal
+#from drizzlepac import tweakreg
+import os
+from astropy.table import Table
+import numpy as np
+import matplotlib.pyplot as plt
+from astropy.io import fits
+import argparse
+
+def residual_plotting_main(path,filter,new_or_old_version):
+
+"""Plots the X and Y residuals as a function of X and Y postions
 
 This script reads in *fit.match files from tweakreg output and makes .png 
 residual plots for each filter. This code must be ran with python 3 for correct rms. 
@@ -21,19 +33,6 @@ Dependencies:
 
 Notes:
 """
-
-
-import glob
-from stsci.tools import teal
-#from drizzlepac import tweakreg
-import os
-from astropy.table import Table
-import numpy as np
-import matplotlib.pyplot as plt
-from astropy.io import fits
-import argparse
-
-def residual_plotting_main(path,filter,new_or_old_version):
 	os.chdir(path)
 	os.system('pwd')               
 	list_of_files=sorted(glob.glob('*fit.match'))
